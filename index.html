@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Failure Telemonitoring - Interactive Research Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .source-citation { font-size: 0.75rem; color: #6b7280; font-style: italic; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid #e5e7eb; }
+        .level-card { transition: all 0.3s ease; }
+        .level-card:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <div class="navbar bg-primary text-primary-content sticky top-0 z-50 shadow-lg">
+        <div class="navbar-start">
+            <a class="btn btn-ghost normal-case text-xl"><i class="fas fa-heartbeat mr-2"></i>HF Telemonitoring</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 text-sm">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#severity">By Severity</a></li>
+                <li><a href="#organization">Organization</a></li>
+                <li><a href="#protocols">Protocols</a></li>
+                <li><a href="#outcomes">Outcomes</a></li>
+                <li><a href="#cost">Cost</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero min-h-[50vh] hero-gradient">
+        <div class="hero-content text-center text-white">
+            <div class="max-w-4xl">
+                <h1 class="text-5xl font-bold mb-4"><i class="fas fa-heart mr-3"></i>Heart Failure Telemonitoring</h1>
+                <h2 class="text-2xl mb-6">Comprehensive Evidence-Based Implementation Guide</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="stat bg-white/10 backdrop-blur rounded-lg p-4">
+                        <div class="stat-value text-3xl">16-77%</div>
+                        <div class="stat-desc text-white/80">Mortality Reduction</div>
+                    </div>
+                    <div class="stat bg-white/10 backdrop-blur rounded-lg p-4">
+                        <div class="stat-value text-3xl">€1,758-3,125</div>
+                        <div class="stat-desc text-white/80">Savings/Patient-Year</div>
+                    </div>
+                    <div class="stat bg-white/10 backdrop-blur rounded-lg p-4">
+                        <div class="stat-value text-3xl">4 Levels</div>
+                        <div class="stat-desc text-white/80">Care Organization</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="alert alert-warning shadow-lg mx-4 -mt-4 mb-8 max-w-6xl lg:mx-auto">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>This report includes web sources and may contain inaccuracies. Please verify important information.</span>
+    </div>
+
+    <main class="container mx-auto px-4 py-8 max-w-7xl">
+
+        <!-- Overview Section -->
+        <section id="overview" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8"><i class="fas fa-chart-line text-primary mr-3"></i>Mortality Reduction by Study</h2>
+            <div class="card bg-base-100 shadow-xl mb-8">
+                <div class="card-body">
+                    <canvas id="mortalityChart" height="280"></canvas>
+                    <div class="source-citation">
+                        <strong>Sources:</strong> HerzMobil: Pölzl et al. 2021 [4]; TELESAT-HF: Girerd et al. 2025 [5]; TIM-HF2: Koehler et al. 2018 [3]; IN-TIME: Hindricks et al. 2014 [17]; Meta-analysis: Scholte et al. 2023 [2]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monitoring by Severity Section -->
+        <section id="severity" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8"><i class="fas fa-layer-group text-secondary mr-3"></i>Monitoring Intensity by Patient Severity</h2>
+            
+            <div class="alert alert-info mb-8">
+                <i class="fas fa-info-circle text-2xl"></i>
+                <div>
+                    <div class="font-bold">Key Principle: Tailor monitoring intensity to patient risk and clinical status</div>
+                    <div class="text-sm">Higher severity = More frequent monitoring + More active intervention</div>
+                </div>
+            </div>
+
+            <!-- Severity Level Cards -->
+            <div class="grid lg:grid-cols-3 gap-6 mb-8">
+                <!-- Intensive -->
+                <div class="card bg-error/10 border-2 border-error shadow-xl level-card">
+                    <div class="card-body">
+                        <div class="badge badge-error mb-2">HIGH INTENSITY</div>
+                        <h3 class="card-title text-error"><i class="fas fa-hospital mr-2"></i>Acute Decompensation</h3>
+                        <p class="text-sm opacity-70">NYHA III-IV, active congestion, "Hospital at Home"</p>
+                        <div class="divider my-2"></div>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-weight text-error mr-2"></i><strong>Vitals:</strong> Twice daily</li>
+                            <li><i class="fas fa-clipboard-list text-error mr-2"></i><strong>Symptoms:</strong> Daily</li>
+                            <li><i class="fas fa-phone text-error mr-2"></i><strong>Contact:</strong> 24/7 access</li>
+                            <li><i class="fas fa-clock text-error mr-2"></i><strong>Response:</strong> 6-12 hours</li>
+                        </ul>
+                        <div class="source-citation">Source: Stevenson et al., JACC 2023 [21]</div>
+                    </div>
+                </div>
+
+                <!-- Moderate -->
+                <div class="card bg-warning/10 border-2 border-warning shadow-xl level-card">
+                    <div class="card-body">
+                        <div class="badge badge-warning mb-2">MODERATE INTENSITY</div>
+                        <h3 class="card-title text-warning"><i class="fas fa-user-clock mr-2"></i>Active Titration</h3>
+                        <p class="text-sm opacity-70">NYHA II-III, post-discharge, medication optimization</p>
+                        <div class="divider my-2"></div>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-weight text-warning mr-2"></i><strong>Vitals:</strong> 5x/week (M-F)</li>
+                            <li><i class="fas fa-clipboard-list text-warning mr-2"></i><strong>Symptoms:</strong> Weekly</li>
+                            <li><i class="fas fa-phone text-warning mr-2"></i><strong>Contact:</strong> Weekly → Bi-weekly</li>
+                            <li><i class="fas fa-clock text-warning mr-2"></i><strong>Response:</strong> 24-72 hours</li>
+                        </ul>
+                        <div class="source-citation">Source: Netherlands Protocol [15], PASSPORT-HF [20]</div>
+                    </div>
+                </div>
+
+                <!-- Stable -->
+                <div class="card bg-success/10 border-2 border-success shadow-xl level-card">
+                    <div class="card-body">
+                        <div class="badge badge-success mb-2">LOW INTENSITY</div>
+                        <h3 class="card-title text-success"><i class="fas fa-shield-alt mr-2"></i>Stable / Surveillance</h3>
+                        <p class="text-sm opacity-70">NYHA I-II, on optimal therapy, euvolemic</p>
+                        <div class="divider my-2"></div>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-weight text-success mr-2"></i><strong>Vitals:</strong> Weekly minimum</li>
+                            <li><i class="fas fa-clipboard-list text-success mr-2"></i><strong>Symptoms:</strong> Weekly</li>
+                            <li><i class="fas fa-phone text-success mr-2"></i><strong>Contact:</strong> Monthly</li>
+                            <li><i class="fas fa-clock text-success mr-2"></i><strong>Response:</strong> Alert-triggered</li>
+                        </ul>
+                        <div class="source-citation">Source: Netherlands Protocol [15]</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NYHA-Based Contact Frequency -->
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-phone-volume mr-2"></i>PASSPORT-HF: Contact Frequency by NYHA Class</h3>
+                    <div class="overflow-x-auto">
+                        <table class="table table-zebra">
+                            <thead class="bg-primary text-white">
+                                <tr><th>Phase</th><th>NYHA III-IV</th><th>NYHA I-II</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Month 1</strong></td><td class="text-error font-bold">Weekly calls</td><td class="text-warning font-bold">Weekly calls</td></tr>
+                                <tr><td><strong>Months 2-12</strong></td><td class="text-warning font-bold">Bi-weekly calls</td><td class="text-success font-bold">Monthly calls</td></tr>
+                                <tr><td><strong>Additional</strong></td><td colspan="2">When PA pressure deviates from target / As needed</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="source-citation">Source: Störk et al., PASSPORT-HF Study, Clin Res Cardiol 2022 [20]</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Organization Section -->
+        <section id="organization" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8"><i class="fas fa-sitemap text-accent mr-3"></i>Netherlands Four-Level Organizational Model</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <!-- Level 1 -->
+                <div class="card bg-blue-50 border-2 border-blue-300 shadow-xl level-card">
+                    <div class="card-body">
+                        <div class="badge badge-primary badge-lg mb-2">LEVEL 1</div>
+                        <h3 class="card-title text-blue-700 text-lg">Technical Support</h3>
+                        <div class="divider my-1"></div>
+                        <ul class="text-sm space-y-1">
+                            <li>✓ Patient onboarding</li>
+                            <li>✓ App installation</li>
+                            <li>✓ Equipment provision</li>
+                            <li>✓ Missed measurement follow-up</li>
+                        </ul>
+                        <div class="mt-2 text-xs opacity-70">Independent of direct medical care</div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="card bg-green-50 border-2 border-green-300 shadow-xl level-card">
+                    <div class="card-body">
+                        <div class="badge badge-success badge-lg mb-2">LEVEL 2</div>
+                        <h3 class="card-title text-green-700 text-lg">Monitoring Nurses</h3>
+                        <div class="divider my-1"></div>
+                        <ul class="text-sm space-y-1">
+                            <li>✓ Monitor alerts</li>
+                            <li>✓ Contact patients</li>
+                            <li>✓ Facilitate treatment changes</li>
+                            <li>✓ Adjust diuretics per protocol</li>
+                        </ul>
+                        <div class="mt-2 text-xs opacity-70">Supervised by Level 3</div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="card bg-orange-50 border-2 border-orange-300 shadow-xl level-card">
+                    <div class="card-body">
+                        <div class="badge badge-warning badge-lg mb-2">LEVEL 3</div>
+                        <h3 class="card-title text-orange-700 text-lg">HF Nurse Specialists</h3>
+                        <div class="divider my-1"></div>
+                        <ul class="text-sm space-y-1">
+                            <li>✓ Supervise Level 2</li>
+                            <li>✓ Titrate GDMT & diuretics</li>
+                            <li>✓ Individualize thresholds</li>
+                            <li>✓ Decide protocol transitions</li>
+                        </ul>
+                        <div class="mt-2 text-xs opacity-70">Weekly supervision meetings</div>
+                    </div>
+                </div>
+
+                <!-- Level 4 -->
+                <div class="card bg-red-50 border-2 border-red-300 shadow-xl level-card">
+                    <div class="card-body">
+                        <div class="badge badge-error badge-lg mb-2">LEVEL 4</div>
+                        <h3 class="card-title text-red-700 text-lg">Cardiologists</h3>
+                        <div class="divider my-1"></div>
+                        <ul class="text-sm space-y-1">
+                            <li>✓ Complex situations only</li>
+                            <li>✓ Complication management</li>
+                            <li>✓ Advanced clinical decisions</li>
+                            <li>✓ Threshold individualization advice</li>
+                        </ul>
+                        <div class="mt-2 text-xs opacity-70">Final clinical authority</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Escalation Flow -->
+            <div class="card bg-gradient-to-r from-blue-500 via-green-500 via-orange-500 to-red-500 text-white shadow-xl">
+                <div class="card-body">
+                    <h3 class="card-title text-white justify-center mb-4">Alert Escalation Pathway</h3>
+                    <div class="flex flex-wrap justify-center items-center gap-4">
+                        <div class="bg-white/20 rounded-lg p-3 text-center">
+                            <i class="fas fa-bell text-2xl mb-1"></i>
+                            <div class="text-sm">Alert Generated</div>
+                        </div>
+                        <i class="fas fa-arrow-right"></i>
+                        <div class="bg-white/20 rounded-lg p-3 text-center">
+                            <i class="fas fa-user-nurse text-2xl mb-1"></i>
+                            <div class="text-sm">Level 2 Nurse</div>
+                        </div>
+                        <i class="fas fa-arrow-right"></i>
+                        <div class="bg-white/20 rounded-lg p-3 text-center">
+                            <i class="fas fa-user-md text-2xl mb-1"></i>
+                            <div class="text-sm">Level 3 Specialist</div>
+                        </div>
+                        <i class="fas fa-arrow-right"></i>
+                        <div class="bg-white/20 rounded-lg p-3 text-center">
+                            <i class="fas fa-stethoscope text-2xl mb-1"></i>
+                            <div class="text-sm">Level 4 Cardiologist</div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4 text-sm opacity-90">
+                        Text message → Phone call → Nurse consultation → Physician escalation (if complex)
+                    </div>
+                </div>
+            </div>
+            <div class="source-citation text-center mt-2">Source: Jansen et al., Netherlands Nationwide Protocol, EHJ Digital Health 2024 [15]</div>
+        </section>
+
+        <!-- Protocols Section -->
+        <section id="protocols" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8"><i class="fas fa-exchange-alt text-info mr-3"></i>Two-Phase Care Protocols</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Unstable Protocol -->
+                <div class="card bg-error/10 border-2 border-error shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-error"><i class="fas fa-exclamation-triangle mr-2"></i>Unstable Protocol (Intensive)</h3>
+                        <div class="divider my-2"></div>
+                        
+                        <h4 class="font-bold">Enrollment Triggers:</h4>
+                        <ul class="text-sm space-y-1 mb-4">
+                            <li>• Hospital discharge (congested HF)</li>
+                            <li>• Initial HF clinic visit</li>
+                            <li>• Ambulatory exacerbation</li>
+                            <li>• Newly diagnosed HF</li>
+                            <li>• Not yet on optimal therapy</li>
+                        </ul>
+                        
+                        <h4 class="font-bold">Monitoring Schedule:</h4>
+                        <div class="overflow-x-auto">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr><td>Weight, BP, HR</td><td class="font-bold text-error">5x/week (M-F)</td></tr>
+                                    <tr><td>Symptoms</td><td class="font-bold">Weekly</td></tr>
+                                    <tr><td>Telephone consultations</td><td class="font-bold">Every 7-14 days</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="bg-error/20 p-3 rounded-lg mt-4">
+                            <strong>Goals:</strong> Stability post-discharge, achieve optimal therapy, decongestion
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stable Protocol -->
+                <div class="card bg-success/10 border-2 border-success shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-success"><i class="fas fa-shield-alt mr-2"></i>Stable Protocol (Maintenance)</h3>
+                        <div class="divider my-2"></div>
+                        
+                        <h4 class="font-bold">Enrollment Criteria:</h4>
+                        <ul class="text-sm space-y-1 mb-4">
+                            <li>• Optimal therapy for ≥1 month</li>
+                            <li>• Euvolemic status</li>
+                            <li>• Stable diuretic dose (1 month)</li>
+                            <li>• No symptom changes</li>
+                            <li>• Adequate self-management skills</li>
+                        </ul>
+                        
+                        <h4 class="font-bold">Monitoring Schedule:</h4>
+                        <div class="overflow-x-auto">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr><td>Weight, BP, HR</td><td class="font-bold text-success">Weekly minimum</td></tr>
+                                    <tr><td>Symptoms</td><td class="font-bold">Weekly</td></tr>
+                                    <tr><td>Face-to-face</td><td class="font-bold">Reduced frequency</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="bg-success/20 p-3 rounded-lg mt-4">
+                            <strong>Goal:</strong> Prevent deterioration through early detection
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transition Criteria -->
+            <div class="card bg-base-100 shadow-xl mt-8">
+                <div class="card-body">
+                    <h3 class="card-title justify-center"><i class="fas fa-arrows-alt-h mr-2"></i>Dynamic Protocol Transitions</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mt-4">
+                        <div class="bg-error/10 p-4 rounded-lg">
+                            <h4 class="font-bold text-error mb-2">↑ Escalation (Stable → Unstable)</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Symptom worsening</li>
+                                <li>• Weight gain (decompensation)</li>
+                                <li>• Hospital (re)admission</li>
+                                <li>• New atrial fibrillation</li>
+                            </ul>
+                        </div>
+                        <div class="bg-success/10 p-4 rounded-lg">
+                            <h4 class="font-bold text-success mb-2">↓ De-escalation (Unstable → Stable)</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Optimal therapy achieved</li>
+                                <li>• Stable weight (1 month)</li>
+                                <li>• No diuretic adjustments needed</li>
+                                <li>• Euvolemia confirmed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="source-citation text-center mt-2">Source: Netherlands Protocol [15]</div>
+        </section>
+
+        <!-- Outcomes Section -->
+        <section id="outcomes" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8"><i class="fas fa-chart-pie text-info mr-3"></i>Clinical Outcomes Evidence</h2>
+            
+            <!-- Trial Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="card bg-success/10 border border-success shadow-xl">
+                    <div class="card-body text-center">
+                        <h3 class="font-bold text-success">HerzMobil Tirol</h3>
+                        <div class="stat-value text-success text-4xl">62%</div>
+                        <div class="text-sm">1-year mortality reduction</div>
+                        <div class="text-xs opacity-70">HR 0.38, p<0.001</div>
+                    </div>
+                </div>
+                <div class="card bg-info/10 border border-info shadow-xl">
+                    <div class="card-body text-center">
+                        <h3 class="font-bold text-info">TELESAT-HF</h3>
+                        <div class="stat-value text-info text-4xl">36%</div>
+                        <div class="text-sm">3-year mortality reduction</div>
+                        <div class="text-xs opacity-70">n=18,882, HR 0.64</div>
+                    </div>
+                </div>
+                <div class="card bg-primary/10 border border-primary shadow-xl">
+                    <div class="card-body text-center">
+                        <h3 class="font-bold text-primary">TIM-HF2</h3>
+                        <div class="stat-value text-primary text-4xl">30%</div>
+                        <div class="text-sm">1-year mortality reduction</div>
+                        <div class="text-xs opacity-70">HR 0.70, p=0.028</div>
+                    </div>
+                </div>
+                <div class="card bg-secondary/10 border border-secondary shadow-xl">
+                    <div class="card-body text-center">
+                        <h3 class="font-bold text-secondary">Meta-analysis</h3>
+                        <div class="stat-value text-secondary text-4xl">16%</div>
+                        <div class="text-sm">Pooled mortality reduction</div>
+                        <div class="text-xs opacity-70">92 studies, n=36,549</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EF Spectrum -->
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h3 class="card-title">TIM-HF2: Benefits Across Ejection Fraction Spectrum</h3>
+                    <canvas id="efChart" height="200"></canvas>
+                    <div class="alert alert-success mt-4">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Key Finding:</strong> No significant heterogeneity (p=0.558) - ALL EF categories benefit from telemonitoring</span>
+                    </div>
+                    <div class="source-citation">Source: Kerwagen et al., Eur J Heart Fail 2023 [6]</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cost Section -->
+        <section id="cost" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8"><i class="fas fa-euro-sign text-warning mr-3"></i>Cost-Effectiveness</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary"><i class="fas fa-chart-bar mr-2"></i>TIM-HF2 Economics</h3>
+                        <canvas id="timhf2CostChart" height="180"></canvas>
+                        <div class="stats stats-vertical mt-4">
+                            <div class="stat py-2">
+                                <div class="stat-title">Net savings (incl. intervention)</div>
+                                <div class="stat-value text-success">€1,758</div>
+                                <div class="stat-desc">per patient-year (p=0.048)</div>
+                            </div>
+                        </div>
+                        <div class="source-citation">Source: Sydow et al., ESC Heart Failure 2022 [7]</div>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-success"><i class="fas fa-piggy-bank mr-2"></i>HerzMobil Economics</h3>
+                        <div class="stats stats-vertical">
+                            <div class="stat py-2">
+                                <div class="stat-title">Hospital-free days gained</div>
+                                <div class="stat-value text-success">+42 days</div>
+                            </div>
+                            <div class="stat py-2">
+                                <div class="stat-title">ICER</div>
+                                <div class="stat-value">€4,773</div>
+                                <div class="stat-desc">per hospital-free life-year</div>
+                            </div>
+                            <div class="stat py-2">
+                                <div class="stat-title">Sensitivity analysis</div>
+                                <div class="stat-value text-success">DOMINANT</div>
+                                <div class="stat-desc">€955 savings + better outcomes</div>
+                            </div>
+                        </div>
+                        <div class="source-citation">Source: Egelseer-Bruendl et al., Clin Res Cardiol 2024 [8]</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certification Section -->
+        <section id="certification" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8"><i class="fas fa-certificate text-accent mr-3"></i>TMZ Certification (DGK Germany)</h2>
+            <div class="card bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-xl">
+                <div class="card-body">
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div class="bg-white/20 p-4 rounded-lg text-center">
+                            <i class="fas fa-clock text-3xl mb-2"></i>
+                            <div class="font-bold">24/7/365</div>
+                            <div class="text-sm">Physician availability</div>
+                        </div>
+                        <div class="bg-white/20 p-4 rounded-lg text-center">
+                            <i class="fas fa-certificate text-3xl mb-2"></i>
+                            <div class="font-bold">ISO 9001:2015</div>
+                            <div class="text-sm">QM certification</div>
+                        </div>
+                        <div class="bg-white/20 p-4 rounded-lg text-center">
+                            <i class="fas fa-user-md text-3xl mb-2"></i>
+                            <div class="font-bold">Cardiologist</div>
+                            <div class="text-sm">TMZ director</div>
+                        </div>
+                        <div class="bg-white/20 p-4 rounded-lg text-center">
+                            <i class="fas fa-stopwatch text-3xl mb-2"></i>
+                            <div class="font-bold">48h Response</div>
+                            <div class="text-sm">Medical standard</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="source-citation text-center mt-2">Source: Helms et al., DGK Position Paper 2022 [16]</div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="card bg-base-200 shadow-xl">
+            <div class="card-body text-center">
+                <p class="text-lg font-semibold">Heart Failure Telemonitoring Research Report</p>
+                <p class="text-sm opacity-70">December 31, 2024 | AI Drive Deep Research Agent</p>
+                <div class="flex justify-center gap-4 mt-4">
+                    <a href="https://myaidrive.com/aAnrcFsrB9gSVhGnGD7LSb/Heart_Failur.md" class="btn btn-primary btn-sm external-link" rel="noopener noreferrer"><i class="fas fa-file-alt mr-2"></i>Full Report</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.querySelectorAll('.external-link').forEach(link => {
+            link.addEventListener('click', function(e) { e.preventDefault(); window.open(this.href, '_blank', 'noopener,noreferrer'); });
+        });
+        Chart.defaults.font.family = "'Inter', 'system-ui', sans-serif";
+
+        // Mortality Chart
+        new Chart(document.getElementById('mortalityChart'), {
+            type: 'bar',
+            data: {
+                labels: ['HerzMobil\n(6-mo)', 'HerzMobil\n(1-yr)', 'TELESAT-HF\n(3-yr)', 'TIM-HF2\n(1-yr)', 'IN-TIME', 'Meta-analysis'],
+                datasets: [{
+                    label: 'Mortality Reduction (%)',
+                    data: [77, 62, 36, 30, 64, 16],
+                    backgroundColor: ['rgba(34,197,94,1)', 'rgba(34,197,94,0.8)', 'rgba(59,130,246,0.9)', 'rgba(102,126,234,0.8)', 'rgba(168,85,247,0.8)', 'rgba(249,115,22,0.8)'],
+                    borderRadius: 8
+                }]
+            },
+            options: { plugins: { legend: { display: false }, title: { display: true, text: 'All-Cause Mortality Reduction (%)' }}, scales: { y: { beginAtZero: true, max: 85 }}}
+        });
+
+        // EF Chart
+        new Chart(document.getElementById('efChart'), {
+            type: 'bar',
+            data: {
+                labels: ['HFrEF (≤40%)', 'HFmrEF (41-49%)', 'HFpEF (≥50%)'],
+                datasets: [{ label: 'Mortality Hazard Ratio', data: [0.71, 0.67, 0.66], backgroundColor: ['rgba(59,130,246,0.8)', 'rgba(168,85,247,0.8)', 'rgba(34,197,94,0.8)'] }]
+            },
+            options: { indexAxis: 'y', plugins: { title: { display: true, text: 'All-Cause Mortality HR by LVEF (<1 = benefit)' }}, scales: { x: { min: 0, max: 1.2 }}}
+        });
+
+        // TIM-HF2 Cost Chart
+        new Chart(document.getElementById('timhf2CostChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Healthcare Costs', 'Total (incl. intervention)'],
+                datasets: [
+                    { label: 'RPM', data: [14412, 15779], backgroundColor: 'rgba(34,197,94,0.8)' },
+                    { label: 'Usual Care', data: [17537, 17537], backgroundColor: 'rgba(239,68,68,0.8)' }
+                ]
+            },
+            options: { plugins: { title: { display: true, text: 'Annual Costs per Patient (€)' }}, scales: { y: { beginAtZero: true }}}
+        });
+    </script>
+</body>
+</html>
